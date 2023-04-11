@@ -6,14 +6,9 @@ public class MessageSendService {
     //final 의 경우 setter 로 값 할당 불가능.
     private MessageSender messageSender;
 
-// Setter Injection 기본 생성자가 필요하다.
-// 아래와 같이 선언할 경우 에러가 발생. MESSAGE : 기본 생성자 필요
-//    public MessageSendService(MessageSender messageSender) {
-//        this.messageSender = messageSender;
-//    }
-
-
-    public MessageSendService() {
+    //ByName : 이름을 통해 bean에서 을 찾아 주입 , 이방법 역시 기본 생성자가 필요함.
+    public void setSmsMessageSender(MessageSender messageSender){
+        this.messageSender = messageSender;
     }
 
     public void setMessageSender(MessageSender messageSender) {

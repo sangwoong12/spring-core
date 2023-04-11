@@ -4,14 +4,15 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">
+    <!-- ByType : 같은 타입이 2개 이상 존재할 경우 에러 발생 하나만 존재해야함. Message : 같은 타입이 2개 존재. -->
+<!--    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">-->
 
-    </bean>
+<!--    </bean>-->
 
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender">
     </bean>
 
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService">
-        <property name="messageSender" ref="smsMessageSender" />
+    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService" autowire="byType">
+<!--          autowire="byName" -->
     </bean>
 </beans>
