@@ -12,11 +12,10 @@
     <context:annotation-config/>
 
 <!--    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">-->
-
 <!--    </bean>-->
 
-    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender">
-    </bean>
+<!--    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender">-->
+<!--    </bean>-->
 
     <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService">
     </bean>
