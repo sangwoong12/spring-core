@@ -5,12 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender"
-    scope="singleton">
+    scope="prototype">
 
     </bean>
 
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender"
-    scope="prototype">
+    scope="singleton" init-method="init">
 
     </bean>
 </beans>

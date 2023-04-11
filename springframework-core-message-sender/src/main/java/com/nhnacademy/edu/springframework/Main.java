@@ -6,18 +6,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
-            //singleton : 호출하기전에 생성 되기 때문에 아래보다 먼저 생성자 메세지 출력 & 싱글턴이기 때문에 여러번 호출해도 한번만 생성자가 호출됨.
-            System.out.println("---------------------------------");
+            //init 확인을 위해 singleton 으로 bean설정 변경.
+            // 생성자 -> afterPropertiesSet() -> init() 순으로 출력되는 것을 확인
+            //InitializingBean : 컴포넌트에 스프링프레임워크의 의존성이 발생함으로 권장하지 않는다.
+            System.out.println("---------- doSendMessage ----------");
             new MessageSendService(context.getBean("smsMessageSender", MessageSender.class)).doSendMessage();
-            System.out.println("---------------------------------");
-            new MessageSendService(context.getBean("smsMessageSender", MessageSender.class)).doSendMessage();
-            System.out.println("---------------------------------");
-            //prototype : 호출시 생성 되기 때문에 호출과 동시에 생성자 메세지 출력
-            new MessageSendService(context.getBean("emailMessageSender", MessageSender.class)).doSendMessage();
-            System.out.println("---------------------------------");
-            new MessageSendService(context.getBean("emailMessageSender", MessageSender.class)).doSendMessage();
-            System.out.println("---------------------------------");
-
+            System.out.println("---------- doSendMessage ----------");
         }
     }
 }
