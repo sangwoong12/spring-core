@@ -11,9 +11,6 @@
     <!-- annotation설정을 위해 추가, schemaLocation 에 2줄 추가-->
     <context:annotation-config/>
 
-    <!-- @Required 애너테이션 사용을 위해 추가 -->
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
-
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">
 
     </bean>
@@ -22,6 +19,5 @@
     </bean>
 
     <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService">
-        <property name="smsMessageSender" ref="smsMessageSender"/>
     </bean>
 </beans>

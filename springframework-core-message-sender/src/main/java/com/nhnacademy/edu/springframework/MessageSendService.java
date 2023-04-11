@@ -2,19 +2,16 @@ package com.nhnacademy.edu.springframework;
 
 import com.nhnacademy.edu.springframework.message_sender.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class MessageSendService {
+//    @Autowired
     private MessageSender messageSender;
 
-    //반드시 의존성이 주입되어야 함을 강제하는 Annotation 이다.
-    //아래의 경우 beans.xml 에서 의존성 주입을 설정하지 않을 경우 컴파일 전에 오류를 잡아준다.
-    @Required
-    public void setSmsMessageSender(MessageSender messageSender) {
-        this.messageSender = messageSender;
-    }
-
-    public void setMessageSender(MessageSender messageSender) {
+    //Type 이 하나만 존재할때 Autowired를 할경우 beans.xml 에 명시해주지 않아도 자동으로 주입된다. 생성자 없이 field 에 선언해주어도 된다.
+    //2개 이상일 경우 Qualifier 로 지정해줄수 있다.
+    @Autowired
+    public void setMessageSender(@Qualifier("smsMessageSender") MessageSender messageSender) {
         this.messageSender = messageSender;
     }
 
