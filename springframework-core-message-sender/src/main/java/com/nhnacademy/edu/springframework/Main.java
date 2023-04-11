@@ -1,18 +1,19 @@
 package com.nhnacademy.edu.springframework;
 
-import com.nhnacademy.edu.springframework.message_sender.EmailMessageSender;
 import com.nhnacademy.edu.springframework.message_sender.MessageSender;
-import com.nhnacademy.edu.springframework.message_sender.SmsMessageSender;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        MessageSender smsMessageSender = new SmsMessageSender();
-        MessageSender emailMessageSender = new EmailMessageSender();
+        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
+            MessageSender smsMessageSender = context.getBean("smsMessageSender", MessageSender.class);
+            MessageSender emailMessageSender = context.getBean("emailMessageSender", MessageSender.class);
 
-        MessageSendService sms = new MessageSendService(smsMessageSender);
-        MessageSendService email = new MessageSendService(emailMessageSender);
+            User user = new User("timeattacks2@naver.com", "010-4596-5429");
 
-        sms.doSendMessage();
-        email.doSendMessage();
+            smsMessageSender.sendMessage(user, "hello");
+            emailMessageSender.sendMessage(user, "hello");
+
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.nhnacademy.edu.springframework.message_sender;
 
 import com.nhnacademy.edu.springframework.User;
-import com.nhnacademy.edu.springframework.message_sender.MessageSender;
 
 public class SmsMessageSender implements MessageSender {
     @Override
