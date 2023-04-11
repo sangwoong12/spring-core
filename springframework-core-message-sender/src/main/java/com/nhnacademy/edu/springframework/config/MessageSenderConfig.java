@@ -13,9 +13,4 @@ public class MessageSenderConfig {
     public SmsMessageSender smsMessageSender() {
         return new SmsMessageSender();
     }
-
-//    @Bean
-//    public MessageSender emailMessageSender() {
-//        return new EmailMessageSender();
-//    }
 }
