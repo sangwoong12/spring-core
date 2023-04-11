@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- ByType : 같은 타입이 2개 이상 존재할 경우 에러 발생 하나만 존재해야함. Message : 같은 타입이 2개 존재. -->
-<!--    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">-->
+    <!-- annotation설정을 위해 추가, schemaLocation 에 2줄 추가-->
+    <context:annotation-config/>
 
-<!--    </bean>-->
+    <!-- @Required 애너테이션 사용을 위해 추가 -->
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.message_sender.EmailMessageSender">
+
+    </bean>
 
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender">
     </bean>
 
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService" autowire="byType">
-<!--          autowire="byName" -->
+    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.MessageSendService">
+        <property name="smsMessageSender" ref="smsMessageSender"/>
     </bean>
 </beans>

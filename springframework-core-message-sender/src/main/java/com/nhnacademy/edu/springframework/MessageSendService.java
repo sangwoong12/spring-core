@@ -1,13 +1,16 @@
 package com.nhnacademy.edu.springframework;
 
 import com.nhnacademy.edu.springframework.message_sender.MessageSender;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 
 public class MessageSendService {
-    //final 의 경우 setter 로 값 할당 불가능.
     private MessageSender messageSender;
 
-    //ByName : 이름을 통해 bean에서 을 찾아 주입 , 이방법 역시 기본 생성자가 필요함.
-    public void setSmsMessageSender(MessageSender messageSender){
+    //반드시 의존성이 주입되어야 함을 강제하는 Annotation 이다.
+    //아래의 경우 beans.xml 에서 의존성 주입을 설정하지 않을 경우 컴파일 전에 오류를 잡아준다.
+    @Required
+    public void setSmsMessageSender(MessageSender messageSender) {
         this.messageSender = messageSender;
     }
 
