@@ -10,7 +10,7 @@
     </bean>
 
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.message_sender.SmsMessageSender"
-    scope="singleton" init-method="init">
+    scope="singleton" init-method="init" destroy-method="destory">
 
     </bean>
 </beans>
