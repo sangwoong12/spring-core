@@ -1,8 +1,12 @@
 package com.nhnacademy.edu.springframework;
 
 import com.nhnacademy.edu.springframework.message_sender.MessageSender;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MessageSendService {
+    @Autowired
     private MessageSender messageSender;
 
     public MessageSendService(MessageSender messageSender) {
