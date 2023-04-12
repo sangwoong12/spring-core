@@ -1,7 +1,7 @@
 package com.nhnacademy.edu.springframework.message_sender;
 
 import com.nhnacademy.edu.springframework.User;
-import org.springframework.stereotype.Component;
+
 
 public class SmsMessageSender implements MessageSender {
     @Override
